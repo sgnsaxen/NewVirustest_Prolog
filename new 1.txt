@@ -1,0 +1,313 @@
+symptom('Sneezing').
+symptom('Coughing').
+symptom('Persistent dry cough').
+symptom('Tiredness').
+symptom('Anosmia').
+symptom('Hyposmia').
+symptom('Aches and pains').
+symptom('Fever').
+symptom('Sore throat').
+symptom('Diarrhoea').
+symptom('Conjuctivitis').
+symptom('Headache').
+symptom('Diabetes').
+symptom('Hypertension').
+symptom('Cardiovascular disease').
+symptom('Chronic respiratory disease').
+symptom('Cancer').
+symptom('Shortness of breath').
+symptom('Chest pain').
+symptom('Loss of speech or movement').
+
+treatment('Sneezing', 'Drink hot water, avoid cold eatables.').
+treatment('Coughing', 'Drink hot salty water, have healthy sleep,').
+treatment('Persistent dry cough', 'Drink hot water, ginger with honey. Avoid alcohol consumption.').
+treatment('Tiredness', 'Drink lots of water and take rest.').
+treatment('Anosmia', 'Drink lots of water, have proper sleep.').
+treatment('Hyposmia', 'Chew peppermint gum, use humidfier.').
+treatment('Aches and pains', 'apply MOVE and take rest.').
+treatment('Fever', 'Put cold water cloth on head and take crocin.').
+treatment('Sore throat', 'Apply pain killer.').
+treatment('Diarrhoea', 'Drink salt and water, eat fruits.').
+treatment('Conjuctivitis', 'wash eyes with cold water atleast 2-3 times daily.').
+treatment('Headache', ' use paracetamol and apply Vicks on forehad and sleep.').
+treatment('Diabetes', 'take Galvius mat-50/1000mg, avoid oil food.').
+treatment('Hypertension', 'Do regular excercise and meditation.').
+treatment('Cardiovascular disease', ' get CT-angiogram done, doctor advise.').
+treatment('Chronic respiratory disease' , ' visit doctor, and avoid odours.').
+treatment('Cancer', ' take doctor advise and getchemotherapy done.').
+treatment('Shortness of breath', ' take doctor advise and get initial assessment done.').
+treatment('Chest pain', ' take doctor advise and get initial assessment done.').
+treatment('Loss of speech or movement', ' take doctor advise and get initial assessment done.').
+
+input :- dynamic(patient/2),
+    repeat,
+    symptom(X),
+    write('Does the patient have '),
+    write(X),
+    write('? '),
+    read(Y),
+    assert(patient(X,Y)),
+    \+ not(X='Pain'),
+    not(output).
+% Assess if any symptoms are present (common, less common, serious)
+
+% Common Symptoms
+% Assess if fever is present
+assesssymptom(fever):-
+    write('Do you have a fever (y or n) ?'),
+    nl,
+    read(Reply == y
+         ->
+         assert(symptom(fever));
+         assert(symptom(nofever))).
+
+% Assess if persistent dry cough is present
+assesssymptom(persistentdrycough):-
+    write('Do you have a persistent dry cough (y or n) ?'),
+    nl,
+    read(Reply == y
+         ->
+         assert(symptom(persistentdrycough));
+         assert(symptom(nopersistentdrycough))).
+
+% Assess if tiredness is present
+assesssymptom(tiredness):-
+    write('Are you feeling tired (y or n)?'),
+    nl,
+    read(Reply == y
+         ->
+         assert(symptom(tiredness));
+         assert(symptom(notiredness))).
+
+% Less common symptoms
+% Assess if aches and pains are present
+assesssymptom(achesandpains):-
+    write('Do you have aches and pains (y or n)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(symptom(achesandpains));
+         assert(symptom(noachesandpains))).
+
+% Assess if sore throat is present
+assesssymptom(sorethroat):-
+    write('Do you have a sore throat (y or n)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(symptom(sorethroat));
+         assert(symptom(nosorethroat))).
+
+% Assess if diarrhea is present
+assesssymptom(diarrhea):-
+    write('Do you have diarrhea (y or n)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(symptom(diarrhea));
+         assert(symptom(nodiarrhea))).
+
+% Assess if conjunctivitis is present
+assesssymptom(conjunctivitis):-
+    write('Do you have conjunctivitis (y or n)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(symptom(conjunctivitis));
+         assert(symptom(noconjunctivitis))).
+
+% Assess if headache is present
+assesssymptom(headache):-
+    write('Do you have a headache (y or n)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(symptom(headache));
+         assert(symptom(noheadache))).
+
+% Assess if anosmia is present
+assesssymptom(anosmia):-
+    write('Do you have anosmia (y or n)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(symptom(anosmia));
+         assert(symptom(noanosmia))).
+
+% Assess if hyposmia is present
+assesssymptom(hyposmia):-
+    write('Do you have hyposmia (y or n)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(symptom(hyposmia));
+         assert(symptom(hyposmia))).
+
+% Assess if running nose is present
+assesssymptom(runningnose):-
+    write('Do you have a running nose (y or n)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(symptom(runningnose));
+         assert(symptom(norunningnose))).
+
+% Serious Symptoms
+% Assess if difficulty breathing is present
+assesssymptom(difficultybreathing):-
+    write('Do you experience difficulty breathing (y or n)?'),
+    nl,
+    read(Reply
+         ->
+         assert(symptom(difficultybreathing));
+         assert(symptom(nodifficultybreathing))).
+
+% Assess if shortness of breath is present
+assesssymptom(shortnessofbreath):-
+    write('Do you experience shortness of breath (y or n)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(symptom(shortnessofbreath));
+         assert(symptom(noshortnessofbreath))).
+
+% Assess if chest pain is present
+assesssymptom(chestpain):-
+    write('Do you have chest pain (y or n)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(symptom(chestpain));
+         assert(symptom(nochestpain))).
+
+% Assess if chest pressure is present
+assesssymptom(chestpressure):-
+    write('Do you have pressure on yor chest (y or n)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(symptom(chestpressure));
+         assert(symptom(nochestpressure))).
+
+% Assess if there is any loss of speech
+assesssymptom(lossofspeech):-
+    write('Do you have any loss of speech (y or n)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(symptom(lossofspeech));
+         assert(symptom(nolossofspeech))).
+
+% Assess of there is any loss of movement
+assesssymptom(lossofmovement):-
+    write('Do you have any loss of movement (y or n)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(symptom(lossofmovement));
+         assert(symptom(nolossofmovement))).
+
+% Assess the level of possible exposure
+% Assess if the patient have been exposed to contaminated areas
+assessExposure(contamination):-
+    write('Were you in places where contamination was possible (y or N)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(exposure(contamination));
+         assert(exposure(nocontamination))).
+
+% Assess if patient have been exposed to possible infected people
+assessExposure(possibleinfected):-
+    write('Were you in contact with people who are possible infected?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(exposure(possibleinfected));
+         assert(exposure(nopossibleinfected))).
+
+% Assess if patient have been exposed to confirmed infected people
+assessExposure(confirmedinfected):-
+    write('Were you in contact with people who are confirmed infected?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(exposure(confirmedinfected));
+         assert(exposure(noconfirmedinfected))).
+
+% Assess the level of vulnerability
+assessVulnerability(hypertensiondiabetescardiovasculardiseasecancer):-
+    write('Do you have any pre-existing health conditions e.g., hypertension, diabetes, cardiovascular disease, or cancer (y or n)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(vulnerability(hypertensiondiabetescardiovasculardiseasecancer));
+         assert(vulnerability(hypertensiondiabetescardiovasculardiseasecancer))).
+
+% Assess age of patient, determine if age is above 70, higher risk
+assessAge(above70risk):-
+    write('Is your age above 70 (y or n)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(age(above70));
+         assert(age(notabove70))).
+
+% Assess gender of patient, if male, higher risk
+assessGender(malerisk):-
+    write('Is your gender male (y or n)?'),
+    nl,
+    read(Reply ==y
+         ->
+         assert(gender(malerisk));
+         assert(gender(nomalerisk))).
+
+% Scoring system to determine the likelihood of contracting the virus
+scoring:-
+    % Assess a value to the answers to the questions
+    (symptom(fever)-> Score1 is 2; Score1 is 0),
+    (symptom(persistentdrycough)-> Score2 is 2; Score2 is 0),
+    (symptom(tiredness)-> Score3 is 2; Score3 is 0),
+    (symptom(achesandpain)-> Score4 is 1; Score4 is 0),
+    (symptom(sorethroat)-> Score5 is 1; Score5 is 0),
+    (symptom(diarrhea)-> Score6 is 1; Score6 is 0),
+    (symptom(conjunctivitis)-> Score7 is 1; Score7 is 0),
+    (symptom(headache)-> Score8 is 1; Score8 is 0),
+    (symptom(anosmia)-> Score9 is 1; Score9 is 0),
+    (symptom(hyposmia)-> Score10 is 1; Score10 is 0),
+    (symptom(runningnose)-> Score11 is 1; Score11 is 0),
+    (symptom(difficultybreathing)-> Score12 is 3; Score12 is 0),
+    (symptom(shortnessofbreath)-> Score13 is 3; Score13 is 0),
+    (symptom(chestpain)-> Score14 is 3; Score14 is 0),
+    (symptom(chestpressure)-> Score15 is 3; Score15 is 0),
+    (symptom(lossofspeech)-> Score16 is 3; Score16 is 0),
+    (symptom(lossofmovement)-> Score17 is 3; Score17 is 0),
+    (exposure(contamination)-> Score18 is 3; Score18 is 0),
+    (exposure(possibleinfected)-> Score19 is 3; Score19 is 0),
+    (exposure(confirmedinfected)-> Score20 is 5; Score20 is 0),
+    (vulnerability(hypertensiondiabetescardiovasculardiseasecancer)-> Score21 is 5; Score21 is 0),
+    (age(above70risk)-> Score22 is 5; Score22 is 0),
+    (gender(malerisk)-> Score23 is 5; Score23 is 0),
+    % Add the scores of the likelihood of contracting the virus
+    Chance is Score1 + Score2 + Score3 + Score4 + Score5 + Score6 + Score7 + Score8 + Score9 + Score10 + Score11 + Score12 + Score13 + Score14 + Score15 + Score16 + Score17,
+    % Add the scores of the risk of contracting the virus
+    Risk is Score18 + Score19 + Score20 + Score21 + Score22 + Score23,
+    % Give the chance the patient has for contracting the virus
+Chance,
+    Chance >= 10->write('There is a high chance that you have contracted the virus');
+    Chance >= 5, Chance < 10->write('There is a moderate chance you have contracted the virus');
+    Chance < 4->write('There is a low chance you have contracted the virus');
+Risk,
+    Risk >= 10->write('There is a high risk for contracting the virus');
+    Risk >= 5, Risk < 10->write('There is a moderate risk for contracting the virus');
+    Risk <4->write('There is a low chance for contracting the virus').
+
+output:-
+    nl,
+    possible_diseases,
+    nl,
+    advice.
+
+possible_diseases :- disease(X), write('The patient may suffer from '), write(X),nl.
+advice :- symptom(X), patient(X,yes), treatment(X,Y), write(Y),nl, \+ not(X='Pain').
